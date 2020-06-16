@@ -11,18 +11,18 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec', '-t', 'app', 'composer', 'install']
 
-  - id: "copiando o .env"
+  - id: "Copiando o .env"
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec', '-t', 'app', 'cp', '.env.example', '.env']
 
-  - id: "rodando key:generate"
+  - id: "Rodando key:generate"
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec', '-t', 'app', 'php', '/var/www/artisan', 'key:generate']
 
-  - id: "rodando migrations"
+  - id: "Rodando migrations"
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec', '-t', 'app', 'php', '/var/www/artisan', 'migrate']
 
-  - id: "rodando tests"
+  - id: "Rodando tests"
     name: 'gcr.io/cloud-builders/docker'
     args: ['exec', '-t', 'app', 'php', '/var/www/artisan', 'test']
